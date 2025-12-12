@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static%}
+
+<form action="{% url 'login' %}" method="post">
+  {% csrf_token %}
+
+<div class="mb-3">
+  <label for="formGroupExampleInput" class="form-label">login</label>
+  <input type="text" class="form-control" id="username" name="username" placeholder="Example username">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2" class="form-label">register</label>
+  <input type="text" class="form-control" id="password" name="password" placeholder="example password">
+</div>
+
+
+
+<button type="submit">login</button>
+</form>
+
+
+
+
+
+
+
+
+{% endblock content %}

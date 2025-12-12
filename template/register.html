@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+  
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <h3 class="text-center mb-3">Create an Account</h3>
+
+          <form action="{% url 'register' %}"method="POST">
+            {% csrf_token %}
+          
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname"required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname"required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email ID</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Mobile Number</label>
+              <input type="tel" class="form-control" id="mnumber" name="mnumber""[0-9]{10}" placeholder="10-digit number" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Address</label>
+              <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" minlength="6" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" minlength="6" required>
+              </div>
+            </div>
+
+            <div id="msg" class="text-danger mb-2"></div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between">
+              <button type="reset" class="btn btn-secondary">Cancel</button>
+              <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script>
+  const form = document.getElementById("regForm");
+  const pw = document.getElementById("password");
+  const cpw = document.getElementById("confirmPassword");
+  const msg = document.getElementById("msg");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    if (pw.value !== cpw.value) {
+      msg.textContent = "Passwords do not match!";
+      return;
+    }
+
+    msg.textContent = "Registration successful!";
+    msg.classList.remove("text-danger");
+    msg.classList.add("text-success");
+
+    // You can add your backend POST request here
+    // fetch("your-api-url", {...})
+  });
+</script>
+
+{% endblock content %}

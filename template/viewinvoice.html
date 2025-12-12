@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<table class="table table-bordered table-striped text-center">
+    <thead class="table-primary">
+        <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Invoice Number</th>
+            <th>Name</th>
+            <th>Due Date</th>
+            <th>Product Name</th>
+            <th>Qty</th>
+            <th>Rate</th>
+            <th>Total</th>
+            <th>Delete Invoice</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for i in invoice1 %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.invoice_date }}</td>
+            <td>{{ i.invoice_number }}</td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.due_date }}</td>
+            <td>{{ i.product_name }}</td>
+            <td>{{ i.qty }}</td>
+            <td>{{ i.rate }}</td>
+            <td>{{ i.total }}</td>
+            <td>
+                <a class="btn btn-danger btn-sm" href="{% url 'deleteinvoice' i.id %}">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
