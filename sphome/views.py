@@ -7,7 +7,7 @@ from . models import *
 def home(request):
     return render(request,"home.html")
 
-def register(request):
+def register_view(request):
     if request.method == "POST":
         first_name=request.POST.get("fname",None)
         last_name=request.POST.get("lname",None)
@@ -19,7 +19,7 @@ def register(request):
         return redirect("login")
     return render(request,"register.html")
 
-def login(request):
+def login_view(request):
     if request.method == "POST":
         username=request.POST.get("username")
         password=request.POST.get("password")

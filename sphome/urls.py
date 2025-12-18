@@ -19,12 +19,10 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-   # path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path("",views.home,name='home'),
-    path("register/",views.register,name="register"),
-    path("register.html",views.register,name="register_html"),
-    path("login/",views.login,name="login"),
-    path("login.html",views.login, name="login_html"),
+    path('login/', views.login_view, name='login'),
+    path('register/', views.register_view, name='register'),
     path("invoice/",views.create_invoice,name="create_invoice"),
     path("invoice.html",views.create_invoice,name="invoice_html"),
     path("viewinvoice/",views.viewinvoice, name="viewinvoice"),
