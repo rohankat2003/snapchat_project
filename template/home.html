@@ -1,15 +1,70 @@
+{% extends 'base.html' %}
 
-{% extends "base.html" %}
+{% block title %}Snapchat{% endblock %}
+
+{% block extra_css %}
+<style>
+body {
+    background-color: #fffc00;
+    font-family: Arial, sans-serif;
+}
+.snap-btn {
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-weight: bold;
+}
+.phone-box {
+    background: white;
+    border-radius: 25px;
+    padding: 20px;
+    width: 280px;
+    height: 520px;
+    margin: auto;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+</style>
+{% endblock %}
 
 {% block content %}
 
-
-
-
+<!-- NAVBAR -->
+<nav class="navbar">
     <div class="container">
-        {% csrf_token %}
-        <h2>Get Started</h2>
-         
-    </div>
+        <span class="navbar-brand fw-bold">Snapchat</span>
 
-    {% endblock content %}
+        <div class="ms-auto">
+    <a href="{% url 'login' %}" class="btn btn-dark snap-btn me-2">Log In</a>
+    <a href="{% url 'register' %}" class="btn btn-light snap-btn">Sign Up</a>
+</div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="container py-5">
+    <div class="row align-items-center">
+
+        <div class="col-md-6 text-center text-md-start">
+            <h1 class="fw-bold display-5">Share the moment</h1>
+            <p class="fs-5 mt-3">
+                Snapchat lets you talk with friends, view Stories,
+                and explore Discover.
+            </p>
+            <button class="btn btn-dark snap-btn mt-3">
+                Download Snapchat
+            </button>
+        </div>
+
+        <div class="col-md-6 mt-5 mt-md-0 text-center">
+            <div class="phone-box d-flex align-items-center justify-content-center">
+                <span class="text-muted">Camera Preview</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="text-center py-4">
+    <small>© 2025 Snapchat</small>
+</footer>
+
+{% endblock %}
